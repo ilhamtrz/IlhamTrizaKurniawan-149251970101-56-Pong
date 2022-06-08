@@ -6,3 +6,4 @@ Temp/*
 .vsconfig
 obj/*
 *.csproj
+*.sln
