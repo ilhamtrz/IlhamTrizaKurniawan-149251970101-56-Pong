@@ -7,11 +7,32 @@ public class BallController : MonoBehaviour
     public Vector2 speed;
     private Rigidbody2D rig;
     public Vector2 resetPosition;
+    private bool isLeftLastCol;
+    private Vector2 initSpeed;
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Padel Kiri")
+        {
+            isLeftLastCol = true;
+        }
+        else if(collision.gameObject.name == "Padel Kanan")
+        {
+            isLeftLastCol = false;
+        }
+        
+    }
+
+    public bool leftLastCol()
+    {
+        return isLeftLastCol;
+    }
 
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         rig.velocity = speed;
+        initSpeed = speed;
     }
     
     public void ResetBall()
@@ -22,5 +43,17 @@ public class BallController : MonoBehaviour
     public void ActivatePUSpeedUp(float magnitude)
     {
         rig.velocity *= magnitude;
+        StartCoroutine(SpeedUpTimer(magnitude));
+    }
+
+    public void DeactivatePUSpeedUp(float magnitude)
+    {
+        rig.velocity /= magnitude;
+    }
+
+    private IEnumerator SpeedUpTimer(float magnitude)
+    {
+        yield return new WaitForSeconds(5f);
+        DeactivatePUSpeedUp(magnitude);
     }
 }
