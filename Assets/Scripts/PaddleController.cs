@@ -46,27 +46,27 @@ public class PaddleController : MonoBehaviour
         rig.velocity = movement;
     }
 
-    public void ActivatePUSpeedUp(float magnitude)
+    public void ActivatePUSpeedUp(float magnitude, float duration)
     {
         speed *= magnitude;
-        StartCoroutine(SpeedUpPaddleTimer());
+        StartCoroutine(SpeedUpPaddleTimer(duration));
     }
 
-    public void ActivatePULongPaddle(float magnitude)
+    public void ActivatePULongPaddle(float magnitude, float duration)
     {
         gameObject.transform.localScale = new Vector3(initScale.x, initScale.y * magnitude, initScale.z);
-        StartCoroutine(LongPaddleTimer());
+        StartCoroutine(LongPaddleTimer(duration));
     }
 
-    private IEnumerator LongPaddleTimer()
+    private IEnumerator LongPaddleTimer(float duration)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(duration);
         DeactivatePULongPaddle();
     }
 
-    private IEnumerator SpeedUpPaddleTimer()
+    private IEnumerator SpeedUpPaddleTimer(float duration)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(duration);
         DeactivatePUSpeedUp();
     }
 

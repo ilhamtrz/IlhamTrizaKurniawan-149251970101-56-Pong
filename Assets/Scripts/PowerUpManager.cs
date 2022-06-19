@@ -23,6 +23,7 @@ public class PowerUpManager : MonoBehaviour
     public void GenerateRandomPowerUp()
     {
         GenerateRandomPowerUp(new Vector2(Random.Range(powerUpAreaMin.x, powerUpAreaMax.x), Random.Range(powerUpAreaMin.y, powerUpAreaMax.y)));
+        
     }
 
     private void Update()
@@ -40,7 +41,7 @@ public class PowerUpManager : MonoBehaviour
 
         if (powerUpList.Count >= maxPowerUpAmount)
         {
-            RemovePowerUp(powerUpList[0]);
+            StartCoroutine(PowerUpTimer());
             return;
         }
 
@@ -74,5 +75,11 @@ public class PowerUpManager : MonoBehaviour
         {
             RemovePowerUp(powerUpList[0]);
         }
+    }
+
+    private IEnumerator PowerUpTimer()
+    {
+        yield return new WaitForSeconds(5f);
+        RemovePowerUp(powerUpList[0]);
     }
 }

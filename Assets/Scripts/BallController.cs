@@ -8,7 +8,6 @@ public class BallController : MonoBehaviour
     private Rigidbody2D rig;
     public Vector2 resetPosition;
     private bool isLeftLastCol;
-    private Vector2 initSpeed;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -32,7 +31,6 @@ public class BallController : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         rig.velocity = speed;
-        initSpeed = speed;
     }
     
     public void ResetBall()
@@ -40,10 +38,10 @@ public class BallController : MonoBehaviour
         transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
     }
 
-    public void ActivatePUSpeedUp(float magnitude)
+    public void ActivatePUSpeedUp(float magnitude, float duration)
     {
         rig.velocity *= magnitude;
-        StartCoroutine(SpeedUpTimer(magnitude));
+        StartCoroutine(SpeedUpTimer(magnitude, duration));
     }
 
     public void DeactivatePUSpeedUp(float magnitude)
@@ -51,9 +49,9 @@ public class BallController : MonoBehaviour
         rig.velocity /= magnitude;
     }
 
-    private IEnumerator SpeedUpTimer(float magnitude)
+    private IEnumerator SpeedUpTimer(float magnitude, float duration)
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(duration);
         DeactivatePUSpeedUp(magnitude);
     }
 }

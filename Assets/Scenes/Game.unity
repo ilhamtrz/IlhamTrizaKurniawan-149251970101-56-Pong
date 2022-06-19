@@ -472,6 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 666989034}
   ball: {fileID: 20708427}
+  duration: 5
   leftPaddle: {fileID: 1916648012}
   rightPaddle: {fileID: 1978391099}
   magnitude: 2
@@ -633,8 +634,8 @@ MonoBehaviour:
   powerUpAreaMin: {x: -7.5, y: -4}
   powerUpAreaMax: {x: 7.5, y: 4}
   powerUpTemplateList:
-  - {fileID: 1899775084}
   - {fileID: 840764931}
+  - {fileID: 1899775084}
   - {fileID: 358550515}
 --- !u!1 &683760959
 GameObject:
@@ -814,6 +815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 666989034}
   ball: {fileID: 20708427}
+  duration: 5
   leftPaddle: {fileID: 1916648012}
   rightPaddle: {fileID: 1978391099}
   magnitude: 2
@@ -1780,6 +1782,7 @@ MonoBehaviour:
   manager: {fileID: 666989034}
   ball: {fileID: 20708427}
   magnitude: 2
+  duration: 5
 --- !u!61 &1899775087
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1954,7 +1957,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec95e43bed17434ba9b11492fc05a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
   upKey: 119
   downKey: 115
 --- !u!50 &1916648016
@@ -2101,7 +2104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fec95e43bed17434ba9b11492fc05a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
+  speed: 6
   upKey: 273
   downKey: 274
 --- !u!50 &1978391103

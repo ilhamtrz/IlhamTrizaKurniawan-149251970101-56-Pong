@@ -6,6 +6,7 @@ public class PUSpeedUpPaddleController : MonoBehaviour
 {
     public PowerUpManager manager;
     public Collider2D ball;
+    public float duration;
     public GameObject leftPaddle;
     public GameObject rightPaddle;
     public float magnitude;
@@ -16,12 +17,12 @@ public class PUSpeedUpPaddleController : MonoBehaviour
         {
             if (ball.GetComponent<BallController>().leftLastCol())
             {
-                leftPaddle.GetComponent<PaddleController>().ActivatePUSpeedUp(magnitude);
+                leftPaddle.GetComponent<PaddleController>().ActivatePUSpeedUp(magnitude, duration);
                 manager.RemovePowerUp(gameObject);
             }
             else
             {
-                rightPaddle.GetComponent<PaddleController>().ActivatePUSpeedUp(magnitude);
+                rightPaddle.GetComponent<PaddleController>().ActivatePUSpeedUp(magnitude, duration);
                 manager.RemovePowerUp(gameObject);
             }
 
